@@ -5,6 +5,7 @@ import AuthProvider = firebase.auth.AuthProvider;
 
 @Injectable()
 export class AuthService {
+
   private user: firebase.User;
 
   constructor(public angularFireAuth: AngularFireAuth) {
@@ -16,5 +17,9 @@ export class AuthService {
   signInWithEmail(credentials) {
     console.log("Sign in with Email");
     return this.angularFireAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password);
+  }
+
+  signUp(credentials) {
+    return this.angularFireAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password);
   }
 }
