@@ -1,0 +1,55 @@
+<ion-content class="background">
+  <ion-card>
+    <ion-card-header>
+      Login
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <ion-list inset>
+
+          <ion-item [ngClass]="{ invalid: emailErrors.hasError('*', ['touched', 'dirty']) }">
+            <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+          </ion-item>
+
+          <div ngxErrors="email" #emailErrors="ngxErrors">
+            <div [ngxError]="['email', 'required']" [when]="['touched', 'dirty']">It should be a valid email</div>
+          </div>
+
+          <ion-item [ngClass]="{ invalid: passwordErrors.hasError('*', ['touched']) }">
+            <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+          </ion-item>
+
+          <div ngxErrors="password" #passwordErrors="ngxErrors">
+            <div class="alertMessage" color="danger" [ngxError]="['minlength', 'required']" [when]="['touched']">It should be at least 5 characters</div>
+          </div>
+        </ion-list>
+
+        <div padding-horizontal>
+          <div class="form-error">{{loginError}}</div>
+
+          <button ion-button full type="submit" [disabled]="!loginForm.valid">Log in</button>
+          <div class="login-footer">
+            <p>
+              <a href="#">Forgot password?</a>
+              If you're a new user, please sign up.
+            </p>
+          </div>
+
+          <ion-list>
+
+            <button color="light" ion-button icon-left block clear (click)="loginWithGoogle()">
+              <ion-icon color="danger" name="logo-google" ></ion-icon>
+              Log in with Google
+            </button>
+
+            <button ion-button icon-left block clear (click)="signup()" color="light">
+              <ion-icon name="person-add"></ion-icon>
+              Sign up
+            </button>
+          </ion-list>
+
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
