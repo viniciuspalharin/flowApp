@@ -9,6 +9,7 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 //Paginas
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
 
 //Angular Fire
 import { AngularFireModule } from 'angularfire2';
@@ -22,7 +23,8 @@ import { AuthService } from '../services/auth.service';
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { AuthService } from '../services/auth.service';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
